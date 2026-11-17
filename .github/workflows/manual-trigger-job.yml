@@ -5,7 +5,7 @@ on:
 
 jobs:
   train-model:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout repository
@@ -27,6 +27,5 @@ jobs:
           test -f src/job.yml
           az ml job create \
             --file src/job.yml \
-            --stream \
             --resource-group "${{ vars.AZURE_RESOURCE_GROUP }}" \
             --workspace-name "${{ vars.AZURE_WORKSPACE_NAME }}"
